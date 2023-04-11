@@ -17,6 +17,16 @@ html {
   z-index: 1;
 }
 
+.select-shape {
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+
 nav {
   color: white;
   z-index: 2;
@@ -45,6 +55,17 @@ nav ul {
   font-size: 3rem;
   left: 50%;
   top: 85%;
+  transform: translate(-50%, -75%);
+}
+
+.job {
+  color: white;
+  font-weight: lighter;
+  z-index: 2;
+  position: absolute;
+  font-size: 1.8rem;
+  left: 50%;
+  top: 92%;
   transform: translate(-50%, -75%);
 }
 

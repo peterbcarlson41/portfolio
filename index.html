@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Three JS Playground</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -12,13 +12,16 @@
   <body>
     <canvas class="webgl"></canvas>
     <nav>
-      <a href="/">Sphere</a>
-      <ul>
-        <li>Explore</li>
-        <li>Create</li>
-      </ul>
+      <a>
+        <select class="select-shape" id="select-shape">
+          <option value="Sphere">Sphere</option>
+          <option value="Cube">Cube</option>
+          <option value="Cylinder">Cylinder</option>
+        </select>
+      </a>
     </nav>
-    <h1 class="title">Give it a spin</h1>
+    <h1 class="title">Click and Drag</h1>
+    <h2 class="job">Toggle Shape Selector to Change Geometry</h2>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

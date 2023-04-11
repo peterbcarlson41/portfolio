@@ -6,13 +6,13 @@ import './style.css'
 //scene
 const scene = new THREE.Scene()
 
-//create sphere
-const geometry = new THREE.SphereGeometry( 3, 40, 100 );
+let geometry = new THREE.SphereGeometry( 3, 40, 100 );
+
 const material = new THREE.MeshStandardMaterial({
   color: '#00ff83',
   roughness: 0.5,
 });
-const mesh = new THREE.Mesh(geometry, material);
+let mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 //Sizes
@@ -57,6 +57,33 @@ window.addEventListener('resize', () => {
   renderer.setSize(sizes.width, sizes.height);
 })
 
+//change shape
+let geometrySelect = document.getElementById('select-shape')
+
+// Listen for changes to the dropdown and update the geometry based on the selection
+geometrySelect.addEventListener('change', (event) => {
+  const selectedGeometry = event.target.value
+
+  console.log(selectedGeometry)
+  
+  // Remove the existing mesh from the scene
+  scene.remove(mesh)
+  
+  // Create a new geometry based on the selected option
+  if (selectedGeometry === 'Sphere') {
+    geometry = new THREE.SphereGeometry(3, 40, 100)
+  } else if (selectedGeometry === 'Cube') {
+    geometry = new THREE.BoxGeometry(3, 3, 3)
+  } else if (selectedGeometry === 'Cylinder') {
+    geometry = new THREE.CylinderGeometry(2, 2, 5, 32)
+  }
+  
+  // Create a new mesh with the updated geometry and add it to the scene
+  mesh = new THREE.Mesh(geometry, material)
+  scene.add(mesh)
+})
+
+
 const loop = () => {
   controls.update();
   renderer.render(scene, camera);
@@ -71,6 +98,9 @@ const tl = gsap.timeline({defaults: {duration: 1}})
 tl.fromTo(mesh.scale, {z:0, x:0, y: 0}, {z:1, x:1, y:1})
 tl.fromTo('nav', {y: '-100%'}, {y: "0%"})
 tl.fromTo('.title', {opacity: 0}, {opacity: 1})
+tl.fromTo('.job', {opacity: 0}, {opacity: 1, duration: 2})
+setTimeout(function() { tl.fromTo('.job', {opacity: 1}, {opacity: 0, duration: 2}); }, 10000);
+setTimeout(function() { tl.fromTo('.title', {opacity: 1}, {opacity: 0, duration: 2}); }, 8000);
 
 //Mouse Animator Color
 let mouseDown = false;
